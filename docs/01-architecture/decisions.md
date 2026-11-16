@@ -434,3 +434,32 @@ workspace. The interface also had no shared component vocabulary.
 
 **Alternatives rejected:** aggregation on demand only (empty explorer), flat text rows
 (no hierarchy), per-screen styling (inconsistent and hard to change).
+
+---
+
+## D-022 — In-progress Git operations are surfaced, never resolved
+
+**Status:** Accepted
+
+**Context:** Git blocks branch switching while a cherry-pick, merge, rebase, or revert is
+pending. Leftover state such as a stale `sequencer` directory produces a long error that is
+easy to truncate and hard to act on.
+
+**Decision:** Detect the operation from the Git directory markers during status refresh and
+show it as a first-class repository state (`⏸ cherry-pick`, `⏸ merge`, …). Failures caused
+by a known condition are translated into a one-line actionable hint, with the raw Git output
+kept in the error overlay.
+
+Repora never runs `--continue`, `--abort`, or `--quit`: resolving an operation is a user
+decision that requires seeing conflict state.
+
+**Consequences:**
+
+- The dashboard answers "why can't I switch branches?" without opening a terminal.
+- Errors stay complete: the overlay wraps and scrolls instead of clipping.
+- Hints are deliberately generic about the consequence; the user runs the command.
+- Detection costs one `rev-parse --absolute-git-dir` plus a few `stat` calls per refresh.
+
+**Alternatives rejected:** parsing human error strings only (misses the cause before an
+action), auto-aborting (destructive and surprising), ignoring the state (what produced the
+bad experience in the first place).

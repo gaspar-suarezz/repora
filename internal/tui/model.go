@@ -106,6 +106,7 @@ type Model struct {
 	confirm   confirmState
 	errDetail string
 	errOpen   bool
+	errScroll int
 
 	width, height int
 	notice        string

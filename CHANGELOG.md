@@ -7,8 +7,15 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [0.1.1] - 2026-11-16
+
 ### Added
 
+- In-progress Git operations (cherry-pick, merge, rebase, revert) are shown in the dashboard
+  and repository overview.
+- Blocking failures now include an actionable hint, for example how to finish or stop a
+  cherry-pick.
+- The error overlay wraps and scrolls instead of clipping long messages.
 - `make install` with a user-local prefix (`~/.local/bin`) and `make uninstall`.
 
 ### Fixed

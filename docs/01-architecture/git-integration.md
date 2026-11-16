@@ -242,6 +242,27 @@ Classification rules:
 
 ---
 
+## In-Progress Operations
+
+Git blocks several commands while a multi-step operation is pending. After reading status,
+the adapter resolves the Git directory (`rev-parse --absolute-git-dir`) and checks for:
+
+| Marker | Operation |
+|---|---|
+| `CHERRY_PICK_HEAD` | `cherry-pick` |
+| `REVERT_HEAD` | `revert` |
+| `MERGE_HEAD` | `merge` |
+| `rebase-merge/` or `rebase-apply/` | `rebase` |
+| `sequencer/` (leftover) | `cherry-pick` |
+
+The operation is reported in `RepositoryState.Operation` and displayed by the UI. Repora
+never resolves it automatically.
+
+Known blocking errors are translated into an actionable hint (see `app.Explain`); the raw
+Git output remains available in the error overlay.
+
+---
+
 ## Operation Reference
 
 All commands run with `cmd.Dir` set to the repository root. Pathspecs are separated with

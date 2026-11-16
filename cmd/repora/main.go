@@ -212,6 +212,9 @@ func statusDetail(state domain.RepositoryState) string {
 	}
 
 	var parts []string
+	if state.Operation != domain.OperationNone {
+		parts = append(parts, "⏸ "+string(state.Operation))
+	}
 	if n := state.StagedCount(); n > 0 {
 		parts = append(parts, fmt.Sprintf("%d staged", n))
 	}

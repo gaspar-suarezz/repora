@@ -67,6 +67,18 @@ func (b BranchState) Label() string {
 	}
 }
 
+// Operation is a multi-step Git operation that is currently in progress.
+type Operation string
+
+// In-progress operations.
+const (
+	OperationNone       Operation = ""
+	OperationMerge      Operation = "merge"
+	OperationCherryPick Operation = "cherry-pick"
+	OperationRevert     Operation = "revert"
+	OperationRebase     Operation = "rebase"
+)
+
 // RepositoryState is a snapshot of Git-derived information. It is never
 // persisted.
 type RepositoryState struct {
@@ -76,6 +88,7 @@ type RepositoryState struct {
 
 	Branch      BranchState
 	WorkingTree WorkingTree
+	Operation   Operation
 }
 
 // StateClass is the dashboard classification of a repository.
@@ -85,6 +98,7 @@ type StateClass string
 const (
 	ClassError       StateClass = "error"
 	ClassConflicts   StateClass = "conflicts"
+	ClassOperation   StateClass = "operation"
 	ClassDiverged    StateClass = "diverged"
 	ClassBehind      StateClass = "behind"
 	ClassAhead       StateClass = "ahead"
@@ -92,6 +106,9 @@ const (
 	ClassClean       StateClass = "clean"
 	ClassUnavailable StateClass = "unavailable"
 )
+
+// InProgress reports whether a multi-step Git operation is pending.
+func (s RepositoryState) InProgress() bool { return s.Operation != OperationNone }
 
 // Class returns the classification with the highest precedence.
 //
@@ -103,6 +120,8 @@ func (s RepositoryState) Class() StateClass {
 		return ClassError
 	case len(s.WorkingTree.Conflicts) > 0:
 		return ClassConflicts
+	case s.Operation != OperationNone:
+		return ClassOperation
 	case s.Branch.Ahead > 0 && s.Branch.Behind > 0:
 		return ClassDiverged
 	case s.Branch.Behind > 0:

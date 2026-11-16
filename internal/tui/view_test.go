@@ -264,3 +264,26 @@ func TestContentHasMargins(t *testing.T) {
 		}
 	}
 }
+
+func TestWorkspaceRowShowsBranchAfterState(t *testing.T) {
+	m := workspaceGoldenModel(t, 120, 40)
+
+	found := false
+	for _, line := range strings.Split(m.View(), "\n") {
+		if !strings.Contains(line, "Web") {
+			continue
+		}
+		found = true
+		state := strings.Index(line, "✓ clean")
+		branch := strings.Index(line, "develop")
+		if state < 0 || branch < 0 {
+			t.Fatalf("row is missing state or branch: %q", line)
+		}
+		if branch < state {
+			t.Errorf("branch should follow the state: %q", line)
+		}
+	}
+	if !found {
+		t.Error("Web row not found")
+	}
+}

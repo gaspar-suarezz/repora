@@ -168,6 +168,9 @@ func (m *Model) renderOverview(budget int) string {
 			conflicts = fmt.Sprintf("%d", n)
 		}
 		b.WriteString(m.kv("Conflicts", conflicts))
+		if row.state.Operation != domain.OperationNone {
+			b.WriteString(m.kv("Operation", string(row.state.Operation)+" in progress"))
+		}
 	}
 
 	b.WriteString("\n")
@@ -194,7 +197,11 @@ func (m *Model) renderOverview(budget int) string {
 	b.WriteString(m.section("Recent commits"))
 	// Status block (5) plus three blank lines, three section titles, and one
 	// line for the remotes block: ten lines before commit rows.
-	k := budget - 10
+	extra := 0
+	if row != nil && row.state.Operation != domain.OperationNone {
+		extra = 1
+	}
+	k := budget - 10 - extra
 	if k < 1 {
 		k = 1
 	}
@@ -546,7 +553,7 @@ func (m *Model) commitLine(commit domain.Commit) string {
 	}
 	return m.st.Dim.Render(commit.Short) + "  " +
 		m.st.Header.Render(truncate(commit.Subject, max(10, m.contentWidth()-42))) + "  " +
-		m.st.Dim.Render(truncate(meta, 18))
+		m.st.Dim.Render(truncate(meta, 26))
 }
 
 func workingTreeSummary(state domain.RepositoryState) string {
@@ -603,18 +610,53 @@ func titleCase(s string) string {
 }
 
 func (m *Model) renderErrorOverlay() string {
-	var b strings.Builder
-	b.WriteString(m.st.Danger.Render("Error"))
-	b.WriteString("\n\n")
-
 	width := max(20, m.contentWidth()-4)
-	for _, line := range strings.Split(m.errDetail, "\n") {
-		for _, wrapped := range wrapLine(line, width) {
-			b.WriteString("  " + wrapped + "\n")
-		}
-	}
+	lines := strings.Split(m.errWrapped(), "\n")
+	page := max(1, m.height-8)
 
-	return m.frame(b.String(), [][2]string{{"Esc", "Close"}})
+	start := m.errScroll
+	if start > len(lines) {
+		start = len(lines)
+	}
+	stop := min(len(lines), start+page)
+
+	var b strings.Builder
+	b.WriteString(m.st.Danger.Render("ERROR"))
+	b.WriteString("\n\n")
+	for _, line := range lines[start:stop] {
+		b.WriteString("  " + line + "\n")
+	}
+	if stop < len(lines) {
+		b.WriteString(m.st.Bar.Render(fmt.Sprintf("↓ %d more lines", len(lines)-stop)) + "\n")
+	}
+	_ = width
+
+	actions := [][2]string{{"Esc", "Close"}}
+	if len(lines) > page {
+		actions = [][2]string{{"↑↓", "Scroll"}, {"Esc", "Close"}}
+	}
+	return m.frame(b.String(), actions)
+}
+
+// errWrapped wraps the detail to the content width so scrolling is line-based.
+func (m *Model) errWrapped() string {
+	width := max(20, m.contentWidth()-6)
+	var out []string
+	for _, line := range strings.Split(m.errDetail, "\n") {
+		out = append(out, wrapLine(line, width)...)
+	}
+	return strings.Join(out, "\n")
+}
+
+func (m *Model) clampErrScroll(page int) {
+	total := len(strings.Split(m.errWrapped(), "\n"))
+	maxScroll := max(0, total-page)
+	if m.errScroll > maxScroll {
+		m.errScroll = maxScroll
+	}
+	if m.errScroll < 0 {
+		m.errScroll = 0
+	}
 }
 
 func wrapLine(line string, width int) []string {

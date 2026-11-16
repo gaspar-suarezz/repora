@@ -354,3 +354,43 @@ func TestQuitKeyNavigatesBack(t *testing.T) {
 		t.Fatalf("screen = %v, want home", m.screen)
 	}
 }
+
+func TestCheckoutFailureShowsActionableHint(t *testing.T) {
+	m, _ := writeModel(t)
+
+	_, _ = m.Update(writeDoneMsg{
+		label:  "checkout develop",
+		repoID: "api",
+		err:    errors.New("checkout in /tmp/api: git switch develop: exit code 128: fatal: cannot switch branch while cherry-picking"),
+	})
+
+	if !m.noticeError {
+		t.Error("notice should be flagged as an error")
+	}
+	if !strings.Contains(m.notice, "cherry-pick") {
+		t.Errorf("notice does not carry the hint: %q", m.notice)
+	}
+	if !strings.Contains(m.errDetail, "Hint:") || !strings.Contains(m.errDetail, "cherry-pick --continue") {
+		t.Errorf("detail is missing the hint: %q", m.errDetail)
+	}
+}
+
+func TestErrorOverlayScrolls(t *testing.T) {
+	m, _ := writeModel(t)
+	m.errDetail = strings.Repeat("a long error line\n", 60)
+	m.openErrorDetail()
+
+	if out := m.View(); !strings.Contains(out, "ERROR") || !strings.Contains(out, "Scroll") {
+		t.Errorf("error overlay is missing its header or scroll hint:\n%s", out)
+	}
+
+	for i := 0; i < 3; i++ {
+		_, _ = m.Update(tea.KeyMsg{Type: tea.KeyDown})
+	}
+	if m.errScroll != 3 {
+		t.Errorf("errScroll = %d, want 3", m.errScroll)
+	}
+	if out := m.View(); !strings.Contains(out, "more lines") {
+		t.Errorf("expected an overflow indicator:\n%s", out)
+	}
+}

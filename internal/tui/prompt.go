@@ -266,6 +266,7 @@ func (m *Model) openErrorDetail() {
 		return
 	}
 	m.errOpen = true
+	m.errScroll = 0
 }
 
 func (m *Model) renderPrompt() string {

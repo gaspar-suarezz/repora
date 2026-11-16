@@ -81,6 +81,7 @@ func (r *Repository) Status(ctx context.Context, repo domain.Repository) domain.
 
 	parsed := ParseStatus(repo.ID, stdout)
 	parsed.FetchedAt = state.FetchedAt
+	parsed.Operation = r.Operation(ctx, repo.Path)
 	return parsed
 }
 

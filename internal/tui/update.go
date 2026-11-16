@@ -2,10 +2,12 @@ package tui
 
 import (
 	"context"
+	"strings"
 	"time"
 
 	tea "github.com/charmbracelet/bubbletea"
 
+	"github.com/gaspar-suarezz/repora/internal/app"
 	"github.com/gaspar-suarezz/repora/internal/domain"
 )
 
@@ -142,8 +144,16 @@ func (m *Model) update(msg tea.Msg) (tea.Model, tea.Cmd) {
 	case writeDoneMsg:
 		m.setRowBusy(msg.repoID, "")
 		if msg.err != nil {
+			hint := app.Explain(msg.err)
 			m.errDetail = msg.err.Error()
-			m.notice = msg.label + " failed: " + truncate(msg.err.Error(), max(20, m.width-30))
+			if hint != "" {
+				m.errDetail += "\n\nHint: " + hint
+			}
+			short := msg.err.Error()
+			if hint != "" {
+				short = hint
+			}
+			m.notice = msg.label + " failed: " + truncate(short, max(20, m.contentWidth()-20))
 			m.noticeError = true
 		} else {
 			m.notice = msg.label + " · done"
@@ -234,10 +244,24 @@ func (m *Model) handleKey(msg tea.KeyMsg) tea.Cmd {
 	}
 
 	if m.errOpen {
+		page := max(1, m.height-8)
 		switch key {
 		case "esc", "q", "enter":
 			m.errOpen = false
+		case "down", "j":
+			m.errScroll++
+		case "up", "k":
+			m.errScroll--
+		case "pgdown", " ":
+			m.errScroll += page
+		case "pgup":
+			m.errScroll -= page
+		case "g":
+			m.errScroll = 0
+		case "G":
+			m.errScroll = len(strings.Split(m.errWrapped(), "\n"))
 		}
+		m.clampErrScroll(page)
 		return nil
 	}
 

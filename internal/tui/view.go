@@ -180,7 +180,7 @@ func (m *Model) workspaceBody(ws domain.Workspace, panelLines int) string {
 	}
 	start, end := sliceWindow(m.rowIndex, len(m.rows), capacity)
 
-	nameWidth, branchWidth := m.columnWidths()
+	nameWidth := m.nameWidth()
 
 	var b strings.Builder
 	for i := start; i < end; i++ {
@@ -193,22 +193,23 @@ func (m *Model) workspaceBody(ws domain.Workspace, panelLines int) string {
 		}
 
 		name := truncate(row.repo.Name, nameWidth)
-		b.WriteString(cursor + " " + nameStyle.Render(padRight(name, nameWidth)))
+		line := cursor + " " + nameStyle.Render(padRight(name, nameWidth))
+		line += "  " + m.stateText(row)
 
-		if branchWidth > 0 {
-			branch := ""
-			if !row.loading && !row.unavailable && row.state.Err == nil {
-				branch = truncate(row.state.Branch.Label(), branchWidth)
+		if branch := m.branchLabel(row); branch != "" {
+			remaining := m.contentWidth() - lipgloss.Width(line) - 2
+			if remaining > 4 {
+				line += "  " + m.st.Bar.Render(truncate(branch, remaining))
 			}
-			b.WriteString("  " + m.st.Dim.Render(padRight(branch, branchWidth)))
 		}
-
-		b.WriteString("  " + m.stateText(row))
 
 		if detail := m.detailText(row); detail != "" && m.contentWidth() >= 104 {
-			b.WriteString("  " + m.st.Dim.Render(detail))
+			remaining := m.contentWidth() - lipgloss.Width(line) - 2
+			if remaining > 8 {
+				line += "  " + m.st.Dim.Render(truncate(detail, remaining))
+			}
 		}
-		b.WriteString("\n")
+		b.WriteString(line + "\n")
 	}
 
 	if end < len(m.rows) {
@@ -261,16 +262,28 @@ func sliceWindow(selected, total, capacity int) (start, end int) {
 	return start, start + capacity
 }
 
-func (m *Model) columnWidths() (name, branch int) {
+func (m *Model) nameWidth() int {
 	effective := m.contentWidth() - 4 // panel borders and padding
-	name, branch = 22, 24
 	switch {
 	case effective < 86:
-		name, branch = 18, 0
+		return 16
 	case effective < 106:
-		name, branch = 20, 16
+		return 20
+	default:
+		return 22
 	}
-	return name, branch
+}
+
+// branchLabel returns the branch to show next to the state, if it adds context.
+func (m *Model) branchLabel(row repoRow) string {
+	if row.loading || row.unavailable || row.state.Err != nil {
+		return ""
+	}
+	label := row.state.Branch.Label()
+	if label == "(unknown)" {
+		return ""
+	}
+	return label
 }
 
 func (m *Model) stateText(row repoRow) string {
@@ -289,6 +302,8 @@ func (m *Model) stateText(row repoRow) string {
 	switch row.state.Class() {
 	case domain.ClassConflicts:
 		return m.st.Danger.Render("✖ conflicts")
+	case domain.ClassOperation:
+		return m.st.Warning.Render("⏸ " + string(row.state.Operation))
 	case domain.ClassDiverged:
 		return m.st.Danger.Render(fmt.Sprintf("⇅ %d↑ %d↓", branch.Ahead, branch.Behind))
 	case domain.ClassBehind:

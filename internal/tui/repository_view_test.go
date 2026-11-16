@@ -201,3 +201,13 @@ func TestUntrackedDiffExplainsItself(t *testing.T) {
 		t.Errorf("content = %q", m.diffContent)
 	}
 }
+
+func TestOperationInProgressShown(t *testing.T) {
+	m := repositoryModel(t)
+	m.rows[0].state.Operation = domain.OperationMerge
+
+	out := m.View()
+	if !strings.Contains(out, "⏸ merge") {
+		t.Errorf("dashboard does not show the operation state:\n%s", out)
+	}
+}

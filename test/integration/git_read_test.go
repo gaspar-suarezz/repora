@@ -154,3 +154,50 @@ func TestShowCommitAgainstRealRepository(t *testing.T) {
 		t.Errorf("commit detail missing file:\n%s", out)
 	}
 }
+
+func TestStatusDetectsInProgressOperation(t *testing.T) {
+	adapter := newAdapter(t)
+	dir := t.TempDir()
+	repo := seedRepository(t, dir)
+
+	gitDir := strings.TrimSpace(gitRun(t, dir, "rev-parse", "--absolute-git-dir"))
+
+	// A leftover sequence blocks branch switching, and Git reports it as an
+	// in-progress cherry-pick. Git only blocks when the todo file exists.
+	if err := os.MkdirAll(filepath.Join(gitDir, "sequencer"), 0o750); err != nil {
+		t.Fatalf("mkdir sequencer: %v", err)
+	}
+	if err := os.WriteFile(filepath.Join(gitDir, "sequencer", "todo"), []byte("pick deadbeef test\n"), 0o600); err != nil {
+		t.Fatalf("write sequencer todo: %v", err)
+	}
+	if state := adapter.Status(context.Background(), repo); state.Operation != domain.OperationCherryPick {
+		t.Errorf("operation = %q, want cherry-pick", state.Operation)
+	}
+	if err := os.RemoveAll(filepath.Join(gitDir, "sequencer")); err != nil {
+		t.Fatalf("remove sequencer: %v", err)
+	}
+
+	markers := map[string]domain.Operation{
+		"MERGE_HEAD":       domain.OperationMerge,
+		"CHERRY_PICK_HEAD": domain.OperationCherryPick,
+		"REVERT_HEAD":      domain.OperationRevert,
+	}
+	for marker, want := range markers {
+		if err := os.WriteFile(filepath.Join(gitDir, marker), []byte("0000000000000000000000000000000000000000\n"), 0o600); err != nil {
+			t.Fatalf("write %s: %v", marker, err)
+		}
+		if state := adapter.Status(context.Background(), repo); state.Operation != want {
+			t.Errorf("%s: operation = %q, want %q", marker, state.Operation, want)
+		}
+		if err := os.Remove(filepath.Join(gitDir, marker)); err != nil {
+			t.Fatalf("remove %s: %v", marker, err)
+		}
+	}
+
+	if err := os.MkdirAll(filepath.Join(gitDir, "rebase-merge"), 0o750); err != nil {
+		t.Fatalf("mkdir rebase-merge: %v", err)
+	}
+	if state := adapter.Status(context.Background(), repo); state.Operation != domain.OperationRebase {
+		t.Errorf("operation = %q, want rebase", state.Operation)
+	}
+}

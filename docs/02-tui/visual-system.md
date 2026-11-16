@@ -113,20 +113,20 @@ Notes:
 ### Row composition
 
 ```text
-> api                 main                        ● modified   2 staged  ↑1
-  web                 develop                     ✓ clean      up to date
-  infra               main                        ↓ behind 2
-  legacy-api          (unavailable)               ! path not found
+> api            ● modified   main                 2 staged  ↑1
+  web            ✓ clean      develop              up to date
+  infra          ↓ behind 2   main
+  legacy-api     ! unavailable
 ```
 
 Columns, in order of dropping priority when width shrinks:
 
 1. Selection gutter (always)
 2. Repository name (always, truncated with ellipsis)
-3. Branch (dropped below 100 columns, shown on a second line instead)
-4. Change summary (dropped below 90 columns)
-5. Divergence (dropped below 80 columns)
-6. State word (always; replaces the summary)
+3. State glyph and word (always)
+4. Branch (always; muted, truncated to the remaining width)
+5. Change summary (dropped below 104 columns)
+6. Divergence appears in the state column
 
 ---
 

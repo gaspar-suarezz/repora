@@ -17,7 +17,7 @@
   <img alt="macOS and Linux" src="https://img.shields.io/badge/platform-macOS%20%7C%20Linux-9CA3AF.svg">
 </p>
 
-![Workspace Explorer](assets/screenshots/explorer.svg)
+![Workspace Explorer](assets/screenshots/explorer.png)
 
 ## Why Repora
 
@@ -44,6 +44,21 @@ between both, and never move code on disk.
 - **Diff and commit review** without leaving the terminal.
 - **Configuration editing** from inside the app: `,` opens your editor and reloads on exit.
 - **Safe by design**: no shell interpolation, no force push, no reset, no clean.
+
+## Screens
+
+<table>
+  <tr>
+    <td width="50%">
+      <img src="assets/screenshots/workspace.png" alt="Workspace Dashboard">
+      <p align="center"><sub>Workspace Dashboard — every repository in one place</sub></p>
+    </td>
+    <td width="50%">
+      <img src="assets/screenshots/repository.png" alt="Repository View">
+      <p align="center"><sub>Repository View — changes, branches and history</sub></p>
+    </td>
+  </tr>
+</table>
 
 ## Install
 
@@ -147,8 +162,8 @@ unavailable; it never prevents the application from starting.
 
 ## Project status
 
-`v0.1.0` is the first public, **experimental** release. Multi-repository awareness and the
-daily Git loop are in place. Known limitations:
+`v0.1.1` is the current public, **experimental** release. Multi-repository awareness and
+the daily Git loop are in place. Known limitations:
 
 - single-line commit messages; no amend
 - diff opens as a full-screen overlay, not a split pane

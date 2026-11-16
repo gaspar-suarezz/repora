@@ -138,10 +138,10 @@ Workspace header:
 WORKSPACES  /  PRODUCT X                    4 repositories
 Customer-facing product
 ╭────────────────────────────────────────────────────╮
-│ > api            feature/payment-flow  ● modified  │
-│   web            develop               ✓ clean     │
-│   infra          main                  ↓ behind 2  │
-│   shared         (unavailable)         ! unavailable│
+│ > api            ● modified  feature/payment-flow  │
+│   web            ✓ clean     develop               │
+│   infra          ↓ behind 2  main                  │
+│   shared         ! unavailable                     │
 ╰────────────────────────────────────────────────────╯
 
 Enter Open   a Add   x Remove   f Fetch   r Refresh   Esc Back
@@ -184,6 +184,8 @@ Rules:
 - **All clean:** no special state; rows show `✓ clean`.
 - **Partial loading:** rows independently transition `queued → refreshing → ready`.
 - **Row error:** state cell shows `✗ error`; `e` opens the error detail modal.
+- **Operation pending:** state cell shows `⏸ cherry-pick` (or merge/rebase/revert); branch
+  switching is blocked until the operation is resolved in a terminal.
 - **Stale data:** if a snapshot is older than the refresh interval, the row's timestamp
   is shown muted.
 

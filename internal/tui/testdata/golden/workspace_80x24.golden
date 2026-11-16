@@ -4,10 +4,10 @@
   WORKSPACES  /  PRODUCT X                                      4 repositories
   Customer-facing product
   ╭──────────────────────────────────────────────────────────────────────────╮
-  │ > API                 ↑ ahead 1                                          │
-  │   Web                 ✓ clean                                            │
-  │   Infrastructure      ↓ behind 2                                         │
-  │   Shared              ✖ conflicts                                        │
+  │ > API               ↑ ahead 1  feature/payment-flow                      │
+  │   Web               ✓ clean  develop                                     │
+  │   Infrastructure    ↓ behind 2  main                                     │
+  │   Shared            ✖ conflicts  main                                    │
   ╰──────────────────────────────────────────────────────────────────────────╯
 
 

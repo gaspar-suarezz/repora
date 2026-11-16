@@ -170,6 +170,7 @@ Branch deletion is not bound in v0.1.
 |---|---|
 | `Enter` | Submit / confirm |
 | `Esc` | Cancel / dismiss |
+| `↑` `↓` / `PgUp` `PgDn` | Scroll an error overlay |
 | `Tab` | Move between fields (multi-field modals only) |
 
 Within a text input:
