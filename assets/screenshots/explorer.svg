@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1047" height="856" viewBox="0 0 1047 856">
+<rect width="100%" height="100%" rx="12" fill="#17191E"/>
+<rect x="0.5" y="0.5" width="1046" height="855" rx="12" fill="none" stroke="#30343D"/>
+<g font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="13" xml:space="preserve">
+<text x="28" y="41" fill="#F4F4F5"></text>
+<text x="28" y="61" fill="#A3E635">  ◈  Repora   WORKSPACE MANAGER                                                                                    dev</text>
+<text x="28" y="81" fill="#F4F4F5">  ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────</text>
+<text x="28" y="101" fill="#F4F4F5"></text>
+<text x="28" y="121" fill="#F4F4F5">  YOUR WORKSPACES</text>
+<text x="28" y="141" fill="#F4F4F5"></text>
+<text x="28" y="161" fill="#F4F4F5">  ╭──────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮</text>
+<text x="28" y="181" fill="#F4F4F5">  │ ◆ Product X                                                                                              4 repos │</text>
+<text x="28" y="201" fill="#F4F4F5">  │ Customer-facing product                                                                                          │</text>
+<text x="28" y="221" fill="#F4F4F5">  │ [API] [Web] [Infrastructure] [Shared]                                                                            │</text>
+<text x="28" y="241" fill="#F16B6B">  │ ✖ 1 conflict  ● 1 modified  ↑ 1 sync  ✓ 1 clean                                                                  │</text>
+<text x="28" y="261" fill="#F4F4F5">  ╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯</text>
+<text x="28" y="281" fill="#F4F4F5"></text>
+<text x="28" y="301" fill="#F4F4F5">  ╭──────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮</text>
+<text x="28" y="321" fill="#F4F4F5">  │ ◇ Personal                                                                                                1 repo │</text>
+<text x="28" y="341" fill="#F4F4F5">  │                                                                                                                  │</text>
+<text x="28" y="361" fill="#F4F4F5">  │ [Dotfiles]                                                                                                       │</text>
+<text x="28" y="381" fill="#A3E635">  │ ✓ 1 clean                                                                                                        │</text>
+<text x="28" y="401" fill="#F4F4F5">  ╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯</text>
+<text x="28" y="421" fill="#F4F4F5"></text>
+<text x="28" y="441" fill="#F4F4F5">  ╭──────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮</text>
+<text x="28" y="461" fill="#F4F4F5">  │ ◇ Empty                                                                                                  0 repos │</text>
+<text x="28" y="481" fill="#F4F4F5">  │ Nothing assigned yet                                                                                             │</text>
+<text x="28" y="501" fill="#F4F4F5">  │ No repositories yet                                                                                              │</text>
+<text x="28" y="521" fill="#F4F4F5">  │ ↵ open, then a to add                                                                                            │</text>
+<text x="28" y="541" fill="#F4F4F5">  ╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯</text>
+<text x="28" y="561" fill="#F4F4F5"></text>
+<text x="28" y="581" fill="#F4F4F5"></text>
+<text x="28" y="601" fill="#F4F4F5"></text>
+<text x="28" y="621" fill="#F4F4F5"></text>
+<text x="28" y="641" fill="#F4F4F5"></text>
+<text x="28" y="661" fill="#F4F4F5"></text>
+<text x="28" y="681" fill="#F4F4F5"></text>
+<text x="28" y="701" fill="#F4F4F5"></text>
+<text x="28" y="721" fill="#F4F4F5"></text>
+<text x="28" y="741" fill="#F4F4F5"></text>
+<text x="28" y="761" fill="#F4F4F5"></text>
+<text x="28" y="781" fill="#F4F4F5"></text>
+<text x="28" y="801" fill="#F4F4F5"></text>
+<text x="28" y="821" fill="#60A5FA">  ↑↓ Navigate   ↵ Open   n New   e Rename   d Delete   r Refresh   ? Help</text>
+</g></svg>

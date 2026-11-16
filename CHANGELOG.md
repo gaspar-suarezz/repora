@@ -1,0 +1,49 @@
+# Changelog
+
+All notable changes to this project are documented in this file.
+
+The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project
+adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+## [Unreleased]
+
+## [0.1.0] - 2026-11-16
+
+First public, experimental release.
+
+### Added
+
+- Workspace Explorer with live repository aggregation: per-workspace counts of clean,
+  modified, conflicting, and out-of-sync repositories.
+- Workspace Dashboard with concurrent status refresh (bounded worker pool) and per-row
+  loading, error, and unavailable states.
+- Repository View with Overview, Changes, Branches, and History tabs.
+- Read-only diff overlay for staged and unstaged changes.
+- Commit detail with the commit patch and stat.
+- Git operations scoped to the selected repository:
+  - stage, stage all, unstage, unstage all and commit
+  - create branch, checkout, delete local branch
+  - fetch, pull (`--ff-only`), push (sets upstream when needed)
+- Workspace management from the UI: create (with optional description), rename, delete,
+  add repository by path, remove repository from a workspace.
+- Configuration editing: `,` opens the file in `$VISUAL`/`$EDITOR` and reloads on exit;
+  `Ctrl+R` reloads from disk.
+- Headless status output with `--debug-status <workspace>`.
+- Atomic configuration writes with unknown-field preservation.
+- Per-repository write locking, input validation, and automatic refresh after writes.
+- Build version shown in the application header.
+
+### Security
+
+- Git is executed as an argument vector, never through a shell.
+- Git runs non-interactively, so credential prompts cannot hang the interface.
+- Destructive actions require confirmation; no force-push, reset, or clean is exposed.
+- Configuration files are written with mode `0600` inside a `0700` directory.
+
+### Known limitations
+
+- Single-line commit messages; no amend.
+- Diff renders as a full-screen overlay, not a split pane.
+- Remote branches are read-only.
+- No stash, rebase, cherry-pick, or worktrees.
+- macOS and Linux only.

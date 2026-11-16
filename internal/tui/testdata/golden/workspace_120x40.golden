@@ -1,0 +1,40 @@
+
+  ◈  Repora   WORKSPACE MANAGER                                                                                    dev
+  ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+  WORKSPACES  /  PRODUCT X                                                                              4 repositories
+  Customer-facing product
+  ╭──────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+  │ > API                     feature/payment-flow      ↑ ahead 1  1 staged · 1 unstaged                             │
+  │   Web                     develop                   ✓ clean                                                      │
+  │   Infrastructure          main                      ↓ behind 2                                                   │
+  │   Shared                  main                      ✖ conflicts                                                  │
+  ╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  Enter Open   a Add   x Remove   f Fetch   r Refresh   Esc Back

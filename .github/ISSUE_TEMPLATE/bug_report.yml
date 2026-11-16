@@ -1,0 +1,58 @@
+name: Bug report
+description: Something does not work as expected
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting. For security issues, do not open an issue; follow
+        [SECURITY.md](https://github.com/gaspar-suarezz/repora/blob/main/SECURITY.md).
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened
+      description: A clear description of the problem.
+      placeholder: Pressing `c` with files staged closes the prompt without committing.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What you expected
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Open a workspace with two repositories
+        2. Select the first repository
+        3. ...
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Repora version
+      description: Output of `repora --version`
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: OS and terminal
+      placeholder: macOS 15, Ghostty; or Ubuntu 24.04, GNOME Terminal
+    validations:
+      required: true
+  - type: input
+    id: git
+    attributes:
+      label: Git version
+      description: Output of `git --version`
+  - type: textarea
+    id: logs
+    attributes:
+      label: Error output
+      description: Use `e` in the repository view to copy the full error, or paste the terminal output.
+      render: text

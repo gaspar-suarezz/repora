@@ -1,0 +1,24 @@
+
+  ◈  Repora   WORKSPACE MANAGER                                            dev
+  ────────────────────────────────────────────────────────────────────────────
+  WORKSPACES  /  PRODUCT X  /  API                                   ↑ ahead 1
+  /tmp/api
+  ╭──────────────────────────────────────────────────────────────────────────╮
+  │ Overview   Changes (2)   Branches   History                              │
+  │                                                                          │
+  │  STATUS                                                                  │
+  │   Branch        feature/payment-flow → origin/feature/payment-flow       │
+  │   Sync          ↑1 ahead                                                 │
+  │   Working tree  1 staged · 1 unstaged                                    │
+  │   Conflicts     none                                                     │
+  │                                                                          │
+  │  REMOTES                                                                 │
+  │   origin    git@github.com:acme/api.git                                  │
+  │                                                                          │
+  │  RECENT COMMITS                                                          │
+  │   a1b2c3d  Add payment retry logic  Ana Ruiz                             │
+  │   9f8e7d6  Refactor settlement service  Luis M.                          │
+  ╰──────────────────────────────────────────────────────────────────────────╯
+
+
+  f Fetch   p Pull   P Push   b Branches   Esc Back

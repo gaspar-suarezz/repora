@@ -1,0 +1,9 @@
+bin/
+dist/
+cover.out
+.DS_Store
+
+# Internal working documents (kept locally, never published)
+/repora.md
+/docs/PROGRESS.md
+/docs/03-phases/

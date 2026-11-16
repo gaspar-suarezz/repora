@@ -1,0 +1,24 @@
+
+  ◈  Repora   WORKSPACE MANAGER                                            dev
+  ────────────────────────────────────────────────────────────────────────────
+  WORKSPACES  /  PRODUCT X  /  API                                   ↑ ahead 1
+  /tmp/api
+  ╭──────────────────────────────────────────────────────────────────────────╮
+  │ Overview   Changes (2)   Branches   History                              │
+  │                                                                          │
+  │ > a1b2c3d  Add payment retry logic with provider fallback                │
+  │     HEAD -> main, origin/main · Repora Sandbox                           │
+  │   9f8e7d6  Refactor settlement service                                   │
+  │     Luis M.                                                              │
+  │                                                                          │
+  │                                                                          │
+  │                                                                          │
+  │                                                                          │
+  │                                                                          │
+  │                                                                          │
+  │                                                                          │
+  │                                                                          │
+  ╰──────────────────────────────────────────────────────────────────────────╯
+
+
+  Enter Details   f Fetch   p Pull   P Push   Esc Back

@@ -1,0 +1,24 @@
+
+  ◈  Repora   WORKSPACE MANAGER                                            dev
+  ────────────────────────────────────────────────────────────────────────────
+  WORKSPACES  /  PRODUCT X                                      4 repositories
+  Customer-facing product
+  ╭──────────────────────────────────────────────────────────────────────────╮
+  │ > API                 ↑ ahead 1                                          │
+  │   Web                 ✓ clean                                            │
+  │   Infrastructure      ↓ behind 2                                         │
+  │   Shared              ✖ conflicts                                        │
+  ╰──────────────────────────────────────────────────────────────────────────╯
+
+
+
+
+
+
+
+
+
+
+
+
+  Enter Open   a Add   x Remove   f Fetch   r Refresh   Esc Back
