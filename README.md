@@ -61,7 +61,12 @@ SHA256SUMS
 
 ```bash
 shasum -a 256 -c SHA256SUMS        # sha256sum -c on Linux
-install -m 0755 repora_$(uname -s | tr 'A-Z' 'a-z')_$(uname -m) /usr/local/bin/repora
+
+# User-local install (no sudo). Add ~/.local/bin to PATH if it is not already.
+install -m 0755 repora_$(uname -s | tr 'A-Z' 'a-z')_$(uname -m) ~/.local/bin/repora
+
+# Or system-wide:
+sudo install -m 0755 repora_$(uname -s | tr 'A-Z' 'a-z')_$(uname -m) /usr/local/bin/repora
 ```
 
 ### From source
@@ -69,8 +74,16 @@ install -m 0755 repora_$(uname -s | tr 'A-Z' 'a-z')_$(uname -m) /usr/local/bin/r
 ```bash
 git clone https://github.com/gaspar-suarezz/repora
 cd repora
-make build
-install -m 0755 bin/repora /usr/local/bin/repora
+make install            # installs to ~/.local/bin/repora
+```
+
+`make install` writes to `$(PREFIX)`, which defaults to `~/.local/bin`. For a system-wide
+install use `sudo make install PREFIX=/usr/local/bin`.
+
+If `repora` is not found afterwards, add `~/.local/bin` to your `PATH`:
+
+```bash
+export PATH="$HOME/.local/bin:$PATH"
 ```
 
 Requires Go 1.24+ and Git 2.30+.

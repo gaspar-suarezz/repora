@@ -5,12 +5,22 @@ DATE    ?= $(shell date -u +%Y-%m-%dT%H:%M:%SZ)
 LDFLAGS := -s -w -X main.version=$(VERSION) -X main.commit=$(COMMIT) -X main.date=$(DATE)
 
 PLATFORMS := darwin/arm64 darwin/amd64 linux/amd64 linux/arm64
+PREFIX    ?= $(HOME)/.local/bin
 SHA256    ?= $(shell command -v sha256sum >/dev/null 2>&1 && echo sha256sum || echo shasum -a 256)
 
-.PHONY: build run test race vet fmt fmt-check lint gate cover dist clean
+.PHONY: build run install uninstall test race vet fmt fmt-check lint gate cover dist clean
 
 build:
 	go build -trimpath -ldflags "$(LDFLAGS)" -o $(BINARY) ./cmd/repora
+
+install: build
+	@install -d "$(PREFIX)"
+	install -m 0755 $(BINARY) "$(PREFIX)/repora"
+	@echo "installed $(PREFIX)/repora"
+
+uninstall:
+	@rm -f "$(PREFIX)/repora"
+	@echo "removed $(PREFIX)/repora"
 
 run:
 	go run ./cmd/repora

@@ -7,6 +7,15 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added
+
+- `make install` with a user-local prefix (`~/.local/bin`) and `make uninstall`.
+
+### Fixed
+
+- Installation instructions no longer require `sudo` for `/usr/local/bin` without saying
+  so.
+
 ## [0.1.0] - 2026-11-16
 
 First public, experimental release.
