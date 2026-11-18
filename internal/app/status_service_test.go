@@ -7,7 +7,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/gaspar-suarezz/repora/internal/domain"
+	"github.com/gasparsuarez/repora/internal/domain"
 )
 
 type fakeGit struct {

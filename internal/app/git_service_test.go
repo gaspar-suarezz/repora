@@ -7,7 +7,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/gaspar-suarezz/repora/internal/domain"
+	"github.com/gasparsuarez/repora/internal/domain"
 )
 
 func TestLocksSerializePerRepository(t *testing.T) {
@@ -26,7 +26,9 @@ func TestLocksSerializePerRepository(t *testing.T) {
 	}
 
 	acquired := make(chan struct{})
+	released := make(chan struct{})
 	go func() {
+		defer close(released)
 		release2, err := locks.Acquire(ctx, "api")
 		if err != nil {
 			t.Errorf("second Acquire: %v", err)
@@ -48,6 +50,13 @@ func TestLocksSerializePerRepository(t *testing.T) {
 	case <-acquired:
 	case <-time.After(time.Second):
 		t.Fatal("second lock was never acquired after release")
+	}
+
+	// Wait until the second holder actually released before checking the state.
+	select {
+	case <-released:
+	case <-time.After(time.Second):
+		t.Fatal("second lock was never released")
 	}
 
 	if locks.IsLocked("api") {

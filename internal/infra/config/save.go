@@ -8,7 +8,7 @@ import (
 
 	"go.yaml.in/yaml/v3"
 
-	"github.com/gaspar-suarezz/repora/internal/domain"
+	"github.com/gasparsuarez/repora/internal/domain"
 )
 
 var (

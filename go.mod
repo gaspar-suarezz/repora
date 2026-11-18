@@ -1,4 +1,4 @@
-module github.com/gaspar-suarezz/repora
+module github.com/gasparsuarez/repora
 
 go 1.24.2
 

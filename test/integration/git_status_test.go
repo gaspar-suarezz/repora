@@ -8,8 +8,8 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/gaspar-suarezz/repora/internal/domain"
-	"github.com/gaspar-suarezz/repora/internal/infra/gitcli"
+	"github.com/gasparsuarez/repora/internal/domain"
+	"github.com/gasparsuarez/repora/internal/infra/gitcli"
 )
 
 // gitRun runs git inside dir with an isolated configuration so the developer's

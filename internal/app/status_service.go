@@ -4,7 +4,7 @@ import (
 	"context"
 	"sync"
 
-	"github.com/gaspar-suarezz/repora/internal/domain"
+	"github.com/gasparsuarez/repora/internal/domain"
 )
 
 // StatusService refreshes repository state concurrently with a bounded worker

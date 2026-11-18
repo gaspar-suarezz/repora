@@ -3,7 +3,7 @@ package gitcli
 import (
 	"testing"
 
-	"github.com/gaspar-suarezz/repora/internal/domain"
+	"github.com/gasparsuarez/repora/internal/domain"
 )
 
 const nul = "\x00"

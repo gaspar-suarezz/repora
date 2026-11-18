@@ -7,7 +7,7 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/gaspar-suarezz/repora/internal/domain"
+	"github.com/gasparsuarez/repora/internal/domain"
 )
 
 // RepositoryDetail is the bundle of read-only information shown by the

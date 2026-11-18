@@ -11,11 +11,11 @@ import (
 
 	tea "github.com/charmbracelet/bubbletea"
 
-	"github.com/gaspar-suarezz/repora/internal/app"
-	"github.com/gaspar-suarezz/repora/internal/domain"
-	"github.com/gaspar-suarezz/repora/internal/infra/config"
-	"github.com/gaspar-suarezz/repora/internal/infra/gitcli"
-	"github.com/gaspar-suarezz/repora/internal/tui"
+	"github.com/gasparsuarez/repora/internal/app"
+	"github.com/gasparsuarez/repora/internal/domain"
+	"github.com/gasparsuarez/repora/internal/infra/config"
+	"github.com/gasparsuarez/repora/internal/infra/gitcli"
+	"github.com/gasparsuarez/repora/internal/tui"
 )
 
 // Build metadata, injected with -ldflags.

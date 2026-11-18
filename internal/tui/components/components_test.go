@@ -6,7 +6,7 @@ import (
 
 	"github.com/charmbracelet/lipgloss"
 
-	"github.com/gaspar-suarezz/repora/internal/tui/theme"
+	"github.com/gasparsuarez/repora/internal/tui/theme"
 )
 
 func TestTagsFitWithinWidth(t *testing.T) {

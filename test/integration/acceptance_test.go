@@ -9,9 +9,9 @@ import (
 	"sync"
 	"testing"
 
-	"github.com/gaspar-suarezz/repora/internal/app"
-	"github.com/gaspar-suarezz/repora/internal/domain"
-	"github.com/gaspar-suarezz/repora/internal/infra/config"
+	"github.com/gasparsuarez/repora/internal/app"
+	"github.com/gasparsuarez/repora/internal/domain"
+	"github.com/gasparsuarez/repora/internal/infra/config"
 )
 
 // TestAcceptanceScenario walks the v0.1 acceptance scenario end to end through

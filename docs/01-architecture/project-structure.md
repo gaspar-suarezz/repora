@@ -10,7 +10,7 @@ See [`architecture-overview.md`](architecture-overview.md) for layering rational
 ## Module
 
 ```text
-module github.com/gaspar-suarezz/repora
+module github.com/gasparsuarez/repora
 go     1.24
 ```
 

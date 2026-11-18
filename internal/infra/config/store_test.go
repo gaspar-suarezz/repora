@@ -6,7 +6,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/gaspar-suarezz/repora/internal/domain"
+	"github.com/gasparsuarez/repora/internal/domain"
 )
 
 func writeConfig(t *testing.T, dir, content string) string {

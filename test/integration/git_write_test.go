@@ -8,7 +8,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/gaspar-suarezz/repora/internal/domain"
+	"github.com/gasparsuarez/repora/internal/domain"
 )
 
 func TestStageAndCommit(t *testing.T) {

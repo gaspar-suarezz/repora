@@ -7,7 +7,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/gaspar-suarezz/repora/internal/domain"
+	"github.com/gasparsuarez/repora/internal/domain"
 )
 
 func seedRepository(t *testing.T, dir string) domain.Repository {

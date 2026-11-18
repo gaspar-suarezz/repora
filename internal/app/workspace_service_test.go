@@ -4,7 +4,7 @@ import (
 	"errors"
 	"testing"
 
-	"github.com/gaspar-suarezz/repora/internal/domain"
+	"github.com/gasparsuarez/repora/internal/domain"
 )
 
 type memStore struct {

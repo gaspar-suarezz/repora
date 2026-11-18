@@ -6,7 +6,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/gaspar-suarezz/repora/internal/domain"
+	"github.com/gasparsuarez/repora/internal/domain"
 )
 
 // WriteTimeout bounds local mutating operations.

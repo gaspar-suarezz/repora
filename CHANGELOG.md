@@ -7,6 +7,18 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [0.1.2] - 2026-11-18
+
+### Changed
+
+- The repository moved to `github.com/gasparsuarez/repora`; the Go module path now matches
+  the new owner, so `go install github.com/gasparsuarez/repora/cmd/repora@latest` works.
+
+### Fixed
+
+- Removed a timing race in the per-repository lock test that failed intermittently under
+  the race detector.
+
 ## [0.1.1] - 2026-11-16
 
 ### Added

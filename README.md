@@ -87,7 +87,7 @@ sudo install -m 0755 repora_$(uname -s | tr 'A-Z' 'a-z')_$(uname -m) /usr/local/
 ### From source
 
 ```bash
-git clone https://github.com/gaspar-suarezz/repora
+git clone https://github.com/gasparsuarez/repora
 cd repora
 make install            # installs to ~/.local/bin/repora
 ```
@@ -162,7 +162,7 @@ unavailable; it never prevents the application from starting.
 
 ## Project status
 
-`v0.1.1` is the current public, **experimental** release. Multi-repository awareness and
+`v0.1.2` is the current public, **experimental** release. Multi-repository awareness and
 the daily Git loop are in place. Known limitations:
 
 - single-line commit messages; no amend

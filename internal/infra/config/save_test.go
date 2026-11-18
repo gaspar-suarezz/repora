@@ -6,7 +6,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/gaspar-suarezz/repora/internal/domain"
+	"github.com/gasparsuarez/repora/internal/domain"
 )
 
 func loadConfig(t *testing.T, path string) *domain.Config {

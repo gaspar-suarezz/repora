@@ -56,7 +56,7 @@ to them from published documentation.
 | Binary | `make build` → `bin/repora` |
 | Git | 2.30+ required |
 | Platforms | macOS and Linux |
-| Module | `github.com/gaspar-suarezz/repora` |
+| Module | `github.com/gasparsuarez/repora` |
 | Config | `~/.config/repora/config.yaml` (override with `--config` or `REPORA_CONFIG`) |
 | Gate | `make gate` (format, vet, test, race) |
 | Distribution | `make dist` (four binaries + `SHA256SUMS`) |

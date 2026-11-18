@@ -11,8 +11,8 @@ import (
 	tea "github.com/charmbracelet/bubbletea"
 	"go.uber.org/goleak"
 
-	"github.com/gaspar-suarezz/repora/internal/app"
-	"github.com/gaspar-suarezz/repora/internal/domain"
+	"github.com/gasparsuarez/repora/internal/app"
+	"github.com/gasparsuarez/repora/internal/domain"
 )
 
 var updateGolden = flag.Bool("update", false, "update golden files")

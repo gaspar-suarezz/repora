@@ -5,7 +5,7 @@ import (
 	"errors"
 	"testing"
 
-	"github.com/gaspar-suarezz/repora/internal/domain"
+	"github.com/gasparsuarez/repora/internal/domain"
 )
 
 // rootGit resolves every path to a fixed repository root.

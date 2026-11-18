@@ -1,6 +1,6 @@
 package config
 
-import "github.com/gaspar-suarezz/repora/internal/domain"
+import "github.com/gasparsuarez/repora/internal/domain"
 
 // FileStore implements domain.ConfigStore against a single YAML file.
 type FileStore struct {

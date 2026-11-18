@@ -7,8 +7,8 @@ import (
 
 	tea "github.com/charmbracelet/bubbletea"
 
-	"github.com/gaspar-suarezz/repora/internal/app"
-	"github.com/gaspar-suarezz/repora/internal/domain"
+	"github.com/gasparsuarez/repora/internal/app"
+	"github.com/gasparsuarez/repora/internal/domain"
 )
 
 // noticeDuration is how long a success notice stays visible.

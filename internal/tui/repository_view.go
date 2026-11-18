@@ -8,8 +8,8 @@ import (
 
 	"github.com/charmbracelet/lipgloss"
 
-	"github.com/gaspar-suarezz/repora/internal/domain"
-	"github.com/gaspar-suarezz/repora/internal/tui/components"
+	"github.com/gasparsuarez/repora/internal/domain"
+	"github.com/gasparsuarez/repora/internal/tui/components"
 )
 
 func (m *Model) renderRepository() string {

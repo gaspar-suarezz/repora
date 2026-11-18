@@ -8,8 +8,8 @@ import (
 	tea "github.com/charmbracelet/bubbletea"
 	"github.com/charmbracelet/lipgloss"
 
-	"github.com/gaspar-suarezz/repora/internal/app"
-	"github.com/gaspar-suarezz/repora/internal/domain"
+	"github.com/gasparsuarez/repora/internal/app"
+	"github.com/gasparsuarez/repora/internal/domain"
 )
 
 func testConfig() *domain.Config {

@@ -4,7 +4,7 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/gaspar-suarezz/repora/internal/domain"
+	"github.com/gasparsuarez/repora/internal/domain"
 )
 
 // GitService runs mutating Git operations with per-repository serialization and

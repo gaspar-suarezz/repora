@@ -7,7 +7,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/gaspar-suarezz/repora/internal/domain"
+	"github.com/gasparsuarez/repora/internal/domain"
 )
 
 // ReadTimeout bounds local read operations.

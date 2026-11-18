@@ -1,7 +1,7 @@
 package tui
 
 import (
-	"github.com/gaspar-suarezz/repora/internal/tui/theme"
+	"github.com/gasparsuarez/repora/internal/tui/theme"
 )
 
 // styles is the resolved theme used by every screen.

@@ -7,7 +7,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/gaspar-suarezz/repora/internal/domain"
+	"github.com/gasparsuarez/repora/internal/domain"
 )
 
 const branchFormat = "%(refname)%00%(refname:short)%00%(HEAD)%00%(upstream:short)%00%(upstream:track)%00%(objectname:short)%00%(authorname)%00%(authordate:iso-strict)%00%(contents:subject)"

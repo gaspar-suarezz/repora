@@ -1,8 +1,8 @@
 package tui
 
 import (
-	"github.com/gaspar-suarezz/repora/internal/app"
-	"github.com/gaspar-suarezz/repora/internal/domain"
+	"github.com/gasparsuarez/repora/internal/app"
+	"github.com/gasparsuarez/repora/internal/domain"
 )
 
 // statusMsg carries one repository snapshot produced by a refresh.
